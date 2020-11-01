@@ -23,7 +23,7 @@
 </head>
 <body>
     <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100%;">
-      <img id="current-seal" src="./sleeping-seal.jpg" />
+      <img id="current-seal"/>
     </div>
     <script>
       const currentSeal = document.getElementById('current-seal');
@@ -42,13 +42,38 @@
       ];
 
       let index = 0;
+      function shuffleArray (array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var rand = Math.floor(Math.random() * (i + 1));
+            [array[i], array[rand]] = [array[rand], array[i]]
+        }
+      }
+      
+      const shuffleAssets = () => {
+        shuffleArray(assets);
+      }
+
+      const nextAsset = () => {
+        currentSeal.src = 'assets/' + assets[index];
+        index = index + 1;
+      }
+
+      shuffleAssets();
+      nextAsset();
 
       document.addEventListener('click', () => {
         if (index < assets.length) {
-          currentSeal.src = 'assets/' + assets[index];
-          index = index + 1;
+          nextAsset();
+        } else {
+          reset();
         }
       });
+
+      const reset = () => {
+        index = 0;
+        shuffleAssets();
+        nextAsset();
+      }
     </script>
 </body>
 </html>
