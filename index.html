@@ -16,15 +16,39 @@
       max-width: 100%;
       height: auto;
       width: auto\9; /* ie8 */
+
+      max-height: 100%;
     }
   </style>
 </head>
 <body>
     <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100%;">
-      <img src="./sleeping-seal.jpg" />
+      <img id="current-seal" src="./sleeping-seal.jpg" />
     </div>
-
     <script>
+      const currentSeal = document.getElementById('current-seal');
+
+      const assets = [
+        'chicken.jpg',
+        'fameseal.jpg',
+        'familyseals.jpg',
+        'fatsealmoss.jpg',
+        'jojoseal.jpg',
+        'kimkseal.jpg',
+        'marilynseal.jpg',
+        'pillow.jpg',
+        'saduglyseal.jpg',
+        'sexseal.jpg',
+      ];
+
+      let index = 0;
+
+      document.addEventListener('click', () => {
+        if (index < assets.length) {
+          currentSeal.src = 'assets/' + assets[index];
+          index = index + 1;
+        }
+      });
     </script>
 </body>
 </html>
