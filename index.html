@@ -37,7 +37,7 @@
     <script>
       const currentSeal = document.getElementById('current-seal');
 
-      const assets = [
+      const fileNames = [
         'familyseals.jpg',	
         'marryporn.jpg',
         '2024seal.jpg',
@@ -75,7 +75,6 @@
         'sexseal.jpg',
         'dancerseal.jpg',
         'heartbreakseal.jpg',
-        'sexyseal.jpg',
         'danceseal.jpg',		
         'hellseal.jpg',
         'sleeping-seals.jpg',
@@ -98,7 +97,10 @@
         'verysadseal.jpg'
       ];
 
-      let index = 0;
+      const lengthfileNames = fileNames.length;
+      let currentIndex = 0;
+      let preLoadIndex = 0;
+
       function shuffleArray (array) {
         for (var i = array.length - 1; i > 0; i--) {
             var rand = Math.floor(Math.random() * (i + 1));
@@ -106,20 +108,42 @@
         }
       }
       
-      const shuffleAssets = () => {
-        shuffleArray(assets);
+      const shuffleFileNames = () => {
+        shuffleArray(fileNames);
+      }
+
+      const convertNameToAsset = (index) => {
+        return 'assets/' + fileNames[index];
+      }
+
+      const preloadImage = (src) => {
+        const img = new Image();
+        img.src = src;
       }
 
       const nextAsset = () => {
-        currentSeal.src = 'assets/' + assets[index];
-        index = index + 1;
+        currentSeal.src = convertNameToAsset(currentIndex);
+        currentIndex = currentIndex + 1;
+        if (currentIndex + 10 < lengthfileNames) {
+          const asset = convertNameToAsset(currentIndex + 10);
+          preloadImage(asset);
+          console.log(currentIndex);
+        }
       }
 
-      shuffleAssets();
+      const initlalPreload = () => {
+        for (let i = 1; i < 10; i++) {
+          const asset = convertNameToAsset(i);
+          preloadImage(asset);
+        }
+      }
+
+      shuffleFileNames();
       nextAsset();
+      initlalPreload();
 
       document.addEventListener('click', () => {
-        if (index < assets.length) {
+        if (currentIndex < lengthfileNames) {
           nextAsset();
         } else {
           reset();
@@ -127,7 +151,7 @@
       });
 
       const reset = () => {
-        index = 0;
+        currentIndex = 0;
         shuffleAssets();
         nextAsset();
       }
