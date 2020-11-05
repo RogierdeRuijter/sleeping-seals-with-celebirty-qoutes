@@ -30,6 +30,6 @@ const startProgressBar = () => {
 }
 
 
-document.addEventListener('next-asset', () => {
+document.addEventListener('start-progress-bar', () => {
     startProgressBar();
 });

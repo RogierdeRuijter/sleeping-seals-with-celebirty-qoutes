@@ -1,7 +1,7 @@
 let currentIndex = 0;
 
 const createNextAssetEvent = () => {
-    document.dispatchEvent(new Event('next-asset'))
+    document.dispatchEvent(new Event('next-asset'));
 }
 
 document.addEventListener('click', () => {
