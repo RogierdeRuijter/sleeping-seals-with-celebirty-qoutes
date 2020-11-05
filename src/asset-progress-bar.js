@@ -24,7 +24,7 @@ const progressStep = (timestamp) => {
 const startProgressBar = () => {
     progressBarWidth = 0;
     startTimeProgressBar = null;
-    eventNotFired = false;
+    eventNotFired = true;
 
     requestAnimationFrame(progressStep);
 }
