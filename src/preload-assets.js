@@ -3,10 +3,6 @@ const preloadImage = (src) => {
     img.src = src;
 }
 
-const convertNameToAsset = (index) => {
-    return 'assets/' + fileNames[index];
-}
-
 const initlalPreload = () => {
     for (let i = 1; i < 10; i++) {
         const asset = convertNameToAsset(i);
