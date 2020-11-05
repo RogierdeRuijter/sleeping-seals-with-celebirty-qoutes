@@ -1,5 +1,3 @@
-let preLoadIndex = 0;
-
 const preloadImage = (src) => {
     const img = new Image();
     img.src = src;
@@ -12,6 +10,7 @@ const convertNameToAsset = (index) => {
 const initlalPreload = () => {
     for (let i = 1; i < 10; i++) {
         const asset = convertNameToAsset(i);
+        console.log(asset);
         preloadImage(asset);
     }
 }

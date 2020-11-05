@@ -70,3 +70,5 @@ function shuffleArray (array) {
 const shuffleFileNames = () => {
     shuffleArray(fileNames);
 }
+
+shuffleFileNames();
