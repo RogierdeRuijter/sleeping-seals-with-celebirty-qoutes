@@ -11,9 +11,9 @@ const progressStep = (timestamp) => {
     
     let progress = timestamp - startTimeProgressBar;
     
-    progressBar.style.width = Math.min(progress / 80, 100) + '%';
+    progressBar.style.width = Math.min(progress / 100, 100) + '%';
 
-    if (progress < 8000) {
+    if (progress < 10000) {
         requestAnimationFrame(progressStep);
     } else if (eventNotFired === true) {
         createNextAssetEvent();
