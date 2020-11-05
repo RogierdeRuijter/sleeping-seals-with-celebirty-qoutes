@@ -10,7 +10,6 @@ const convertNameToAsset = (index) => {
 const initlalPreload = () => {
     for (let i = 1; i < 10; i++) {
         const asset = convertNameToAsset(i);
-        console.log(asset);
         preloadImage(asset);
     }
 }
