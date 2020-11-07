@@ -1,5 +1,5 @@
 const reset = () => {
     currentIndex = 0;
-    shuffleAssets();
-    nextAsset();
+    shuffleFileNames();
+    createNextAssetEvent();
 }
