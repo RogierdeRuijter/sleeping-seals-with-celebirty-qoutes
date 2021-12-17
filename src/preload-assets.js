@@ -4,7 +4,7 @@ const preloadImage = (src) => {
 }
 
 const initlalPreload = () => {
-    for (let i = 1; i < 10; i++) {
+    for (let i = 1; i < 3; i++) {
         const asset = convertNameToAsset(i);
         preloadImage(asset);
     }
@@ -12,8 +12,8 @@ const initlalPreload = () => {
 initlalPreload();
 
 const preloadIfPossible = () => {
-    if (currentIndex + 10 < lengthfileNames) {
-        const asset = convertNameToAsset(currentIndex + 10);
+    if (currentIndex + 3 < lengthfileNames) {
+        const asset = convertNameToAsset(currentIndex + 3);
     
         preloadImage(asset);
     }
