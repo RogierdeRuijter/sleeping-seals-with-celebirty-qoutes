@@ -13,6 +13,7 @@ document.addEventListener("click", () => {
 });
 
 let nextSealTimeout;
+let nextSealAnimationFrame;
 const showNextAsset = () => {
   currentSeal.src = convertNameToAsset(currentIndex);
   currentIndex = currentIndex + 1;
@@ -23,7 +24,10 @@ const showNextAsset = () => {
   progressBar.style.width = "0%";
 
   nextSealTimeout = setTimeout(() => {
-    createNextAssetEvent();
+    cancelAnimationFrame(nextSealAnimationFrame);
+    nextSealAnimationFrame = requestAnimationFrame(() => {
+      createNextAssetEvent();
+    });
   }, 10000);
 };
 document.addEventListener("next-asset", () => {
