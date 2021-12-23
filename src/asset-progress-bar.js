@@ -1,35 +1,24 @@
-const progressBar = document.getElementById('progress-bar');
+const progressBar = document.getElementById("progress-bar");
 let progressBarWidth = 0;
 
-let startTimeProgressBar = null;
 let eventNotFired = true;
 
-const progressStep = (timestamp) => {
-    if (!startTimeProgressBar) {
-        startTimeProgressBar = timestamp;
-    }
-    
-    let progress = timestamp - startTimeProgressBar;
-    
-    progressBar.style.width = Math.min(progress / 100, 100) + '%';
-
-    if (progress < 10000) {
-        requestAnimationFrame(progressStep);
-    } else if (eventNotFired === true) {
-        createNextAssetEvent();
-        eventNotFired = false;
-    }
+const progressStep = () => {
+  progressBar.style.transition = "width 10s linear";
+  progressBar.style.width = "100%";
 };
 
 const startProgressBar = () => {
-    progressBarWidth = 0;
-    startTimeProgressBar = null;
-    eventNotFired = true;
+  startTimeProgressBar = null;
+  eventNotFired = true;
 
-    requestAnimationFrame(progressStep);
-}
+  console.log("startProgressBar");
 
+  progressStep();
+};
 
-document.addEventListener('start-progress-bar', () => {
-    startProgressBar();
+// document.getElementById("progress-bar").style.width = "0";
+
+document.addEventListener("start-progress-bar", () => {
+  startProgressBar();
 });
