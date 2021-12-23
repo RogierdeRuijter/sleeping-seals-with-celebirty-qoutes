@@ -23,10 +23,7 @@ const showNextAsset = () => {
   progressBar.style.width = "0%";
 
   nextSealTimeout = setTimeout(() => {
-    // if (eventNotFired === true) {
     createNextAssetEvent();
-    //   eventNotFired = false;
-    // }
   }, 10000);
 };
 document.addEventListener("next-asset", () => {
