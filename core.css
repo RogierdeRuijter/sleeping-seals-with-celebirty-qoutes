@@ -14,7 +14,3 @@ img {
   -o-user-select: none;
   user-select: none;
 }
-
-.rounded-corners {
-  border-radius: 10px;
-}
